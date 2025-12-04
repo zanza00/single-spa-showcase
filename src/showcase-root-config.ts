@@ -28,14 +28,15 @@ registerApplication({
 // Main Content (all presentation slides)
 registerApplication({
   name: "@showcase/content",
-  app: () =>
-    import(
-      // @ts-expect-error no static types for this package
-      "@showcase/content"
-    ) as any,
+  app: () => import(
+    // @ts-expect-error no static types for this package
+    "@showcase/content"
+  ) as any,
   activeWhen: [
     "/",
     "/about",
+    "/setup",
+    "/spoilers",
     "/architecture",
     "/good",
     "/bad",
