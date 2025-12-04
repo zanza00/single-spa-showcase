@@ -42,12 +42,15 @@
   <!-- <meta name="import-map-overrides-domains" content="denylist:prod.example.com" /> -->
 
   <!-- Shared dependencies go into this import map -->
+  <!-- Note: Using esm.sh with ?dev flag for React 19 ESM compatibility -->
+  <!-- The ?dev flag preserves named exports and prevents optimization issues -->
   <script type="injector-importmap">
     {
       "imports": {
         "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js",
-        "react": "https://esm.sh/react@19.0.1/?dev",
-        "react-dom/client": "https://esm.sh/react-dom@19.0.1/client/?dev"
+        "react": "https://esm.sh/react@19.0.0?dev",
+        "react-dom": "https://esm.sh/react-dom@19.0.0?dev",
+        "react-dom/client": "https://esm.sh/react-dom@19.0.0/client?dev"
       }
     }
   </script>
