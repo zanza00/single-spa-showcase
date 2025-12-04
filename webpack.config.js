@@ -10,8 +10,16 @@ module.exports = (webpackConfigEnv, argv) => {
     webpackConfigEnv,
     argv,
     disableHtmlGeneration: true,
-    // outputSystemJS: false,
+    outputSystemJS: false,
   });
+
+  defaultConfig.externals = [
+    ...defaultConfig.externals,
+    "react",
+    "react-dom",
+    "react-dom/client",
+  ];
+  console.log(defaultConfig);
 
   return merge(defaultConfig, {
     // modify the webpack config however you'd like to by adding to this object

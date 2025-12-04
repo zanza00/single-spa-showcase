@@ -1,7 +1,5 @@
 import { registerApplication, start } from "single-spa";
 
-console.log("hello world");
-
 // ============================================
 // Shared Libraries (imported by other MFEs)
 // ============================================
@@ -72,7 +70,6 @@ registerApplication({
 // Start Single-SPA
 // ============================================
 //
-console.log("before start");
 start({
   urlRerouteOnly: true,
 });
