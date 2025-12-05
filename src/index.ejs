@@ -33,10 +33,19 @@
     }
 
     #main-content {
-      margin-top: 140px; /* Space for shell (header ~80px + progress ~60px) */
-      min-height: calc(100vh - 140px);
+      margin-top: 80px; /* Space for shell header */
+      min-height: calc(100vh - 140px); /* Account for header + bottom progress bar */
       padding: 2rem;
+      padding-bottom: 80px; /* Space for bottom progress bar */
       background: #282a36;
+    }
+
+    #progress-bar-portal {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
     }
   </style>
   <!-- If you wish to turn off import-map-overrides for specific environments (prod), uncomment the line below -->
@@ -49,6 +58,7 @@
       "imports": {
         "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js",
         "react": "https://esm.sh/react@19.0.1/?dev",
+        "react-dom": "https://esm.sh/react-dom@19.0.1/?dev",
         "react-dom/client": "https://esm.sh/react-dom@19.0.1/client/?dev"
       }
     }
@@ -96,6 +106,9 @@
 
   <!-- Main content area for routed MFEs -->
   <main id="main-content"></main>
+
+  <!-- Portal target for progress bar (rendered by shell MFE) -->
+  <div id="progress-bar-portal"></div>
 
   <script>
     window.importMapInjector.initPromise.then(() => {
