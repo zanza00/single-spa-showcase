@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = (webpackConfigEnv, argv) => {
   const orgName = "showcase";
+  const isLocal = webpackConfigEnv && webpackConfigEnv.isLocal;
+  
   const defaultConfig = singleSpaDefaults({
     orgName,
     projectName: "root-config",
@@ -19,16 +21,18 @@ module.exports = (webpackConfigEnv, argv) => {
     "react-dom",
     "react-dom/client",
   ];
-  console.log(defaultConfig);
 
   return merge(defaultConfig, {
-    // modify the webpack config however you'd like to by adding to this object
+    output: {
+      // For GitHub Pages, assets are served from /single-spa-showcase/
+      publicPath: isLocal ? "/" : "/single-spa-showcase/",
+    },
     plugins: [
       new HtmlWebpackPlugin({
         inject: false,
         template: "src/index.ejs",
         templateParameters: {
-          isLocal: webpackConfigEnv && webpackConfigEnv.isLocal,
+          isLocal,
           orgName,
         },
       }),

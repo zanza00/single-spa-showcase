@@ -53,6 +53,7 @@
   <!-- <meta name="import-map-overrides-domains" content="denylist:prod.example.com" /> -->
 
   <!-- Shared dependencies go into this import map -->
+  <% if (isLocal) { %>
   <script type="injector-importmap">
     {
       "imports": {
@@ -63,18 +64,31 @@
       }
     }
   </script>
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js" as="module">
-
-  <!-- Production import map (replace with your deployment URLs) -->
+  <% } %>
   <% if (!isLocal) { %>
   <script type="injector-importmap">
     {
       "imports": {
-        "@showcase/root-config": "https://STUB-root-config.example.com/showcase-root-config.js",
-        "@showcase/shared-libs": "https://STUB-shared-libs.example.com/showcase-shared-libs.js",
-        "@showcase/shell": "https://STUB-shell.example.com/showcase-shell.js",
-        "@showcase/intro": "https://STUB-intro.example.com/showcase-intro.js",
-        "@showcase/content": "https://STUB-content.example.com/showcase-content.js"
+        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js",
+        "react": "https://esm.sh/react@19.0.1/",
+        "react-dom": "https://esm.sh/react-dom@19.0.1/",
+        "react-dom/client": "https://esm.sh/react-dom@19.0.1/client/"
+      }
+    }
+  </script>
+  <% } %>
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js" as="module">
+
+  <!-- Production import map -->
+  <% if (!isLocal) { %>
+  <script type="injector-importmap">
+    {
+      "imports": {
+        "@showcase/root-config": "https://zanzapla.net/single-spa-showcase/showcase-root-config.js",
+        "@showcase/shared-libs": "https://zanzapla.net/showcase-shared-libs/showcase-shared-libs.js",
+        "@showcase/shell": "https://zanzapla.net/showcase-shell/showcase-shell.js",
+        "@showcase/intro": "https://zanzapla.net/showcase-intro/showcase-intro.js",
+        "@showcase/content": "https://zanzapla.net/showcase-content/showcase-content.js"
       }
     }
   </script>
