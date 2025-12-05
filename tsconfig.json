@@ -3,6 +3,7 @@
   "files": ["src/showcase-root-config.ts"],
   "compilerOptions": {
     "declarationDir": "dist",
+    "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
       "@showcase/shared-libs": ["../shared-libs/src/showcase-shared-libs.tsx"],
