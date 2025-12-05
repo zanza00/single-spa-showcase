@@ -25,24 +25,29 @@ registerApplication({
 // Routed Applications
 // ============================================
 
-// Main Content (all presentation slides)
+// Intro MFE (introduction slides)
+registerApplication({
+  name: "@showcase/intro",
+  app: () =>
+    import(
+      // @ts-expect-error no static types for this package
+      "@showcase/intro"
+    ),
+  activeWhen: (location) => {
+    const path = location.pathname;
+    return path === "/" || path.startsWith("/intro");
+  },
+});
+
+// Content MFE (main presentation slides)
 registerApplication({
   name: "@showcase/content",
-  app: () => import(
-    // @ts-expect-error no static types for this package
-    "@showcase/content"
-  ) as any,
-  activeWhen: [
-    "/",
-    "/about",
-    "/setup",
-    "/spoilers",
-    "/architecture",
-    "/good",
-    "/bad",
-    "/ugly",
-    "/end",
-  ],
+  app: () =>
+    import(
+      // @ts-expect-error no static types for this package
+      "@showcase/content"
+    ),
+  activeWhen: (location) => location.pathname.startsWith("/content"),
 });
 
 // QA Extras (hidden content, accessible only via import-map-override)
