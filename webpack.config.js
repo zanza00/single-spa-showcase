@@ -3,7 +3,7 @@ const singleSpaDefaults = require("webpack-config-single-spa-ts");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = (webpackConfigEnv, argv) => {
-  const orgName = "showcase";
+  const orgName = "zanza00";
   const isLocal = webpackConfigEnv && webpackConfigEnv.isLocal;
   
   const defaultConfig = singleSpaDefaults({

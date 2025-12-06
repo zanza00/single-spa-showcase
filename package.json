@@ -1,5 +1,5 @@
 {
-  "name": "@showcase/root-config",
+  "name": "@zanza00/root-config",
   "scripts": {
     "start": "webpack serve --port 9000 --env isLocal",
     "lint": "eslint src --ext js,ts,tsx",
@@ -45,6 +45,6 @@
     "single-spa": "^5.9.3",
     "@types/webpack-env": "^1.16.2"
   },
-  "types": "dist/showcase-root-config.d.ts",
+  "types": "dist/zanza00-root-config.d.ts",
   "version": "0.0.4"
 }
