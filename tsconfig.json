@@ -1,6 +1,6 @@
 {
   "extends": "ts-config-single-spa",
-  "files": ["src/showcase-root-config.ts"],
+  "files": ["src/zanza00-root-config.ts"],
   "compilerOptions": {
     "declarationDir": "dist",
     "skipLibCheck": true,
