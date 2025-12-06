@@ -52,25 +52,15 @@ registerApplication({
 
 // QA Extras (hidden content, accessible only via import-map-override)
 // Fails gracefully if not in import map
-// registerApplication({
-//   name: "@zanza00/qa-extra",
-//   app: () =>
-//     import(
-//       // @ts-expect-error no static types for this package
-//       "@zanza00/qa-extra"
-//     ).catch(() => {
-//       console.log(
-//         "[Root Config] qa-extra not available (use import-map-overrides to enable)"
-//       );
-//       // Return empty lifecycle to prevent errors
-//       return {
-//         bootstrap: () => Promise.resolve(),
-//         mount: () => Promise.resolve(),
-//         unmount: () => Promise.resolve(),
-//       };
-//     }) as any,
-//   activeWhen: ["/bonus", "/behind-scenes", "/true-ending", "/qa-only"],
-// });
+registerApplication({
+  name: "@zanza00/qa-extra",
+  app: () =>
+    import(
+      // @ts-expect-error no static types for this package
+      "@zanza00/qa-extra"
+    ),
+  activeWhen: (location) => location.pathname.startsWith("/extra"),
+});
 
 // ============================================
 // Start Single-SPA
