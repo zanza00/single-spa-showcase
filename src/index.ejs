@@ -53,19 +53,6 @@
   <!-- <meta name="import-map-overrides-domains" content="denylist:prod.example.com" /> -->
 
   <!-- Shared dependencies go into this import map -->
-  <% if (isLocal) { %>
-  <script type="injector-importmap">
-    {
-      "imports": {
-        "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js",
-        "react": "https://esm.sh/react@19.0.1/?dev",
-        "react-dom": "https://esm.sh/react-dom@19.0.1/?dev",
-        "react-dom/client": "https://esm.sh/react-dom@19.0.1/client/?dev"
-      }
-    }
-  </script>
-  <% } %>
-  <% if (!isLocal) { %>
   <script type="injector-importmap">
     {
       "imports": {
@@ -76,38 +63,20 @@
       }
     }
   </script>
-  <% } %>
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/single-spa@6.0.3/lib/es2015/esm/single-spa.min.js" as="module">
 
   <!-- Production import map -->
-  <% if (!isLocal) { %>
   <script type="injector-importmap">
     {
       "imports": {
-        "@showcase/root-config": "https://zanzapla.net/single-spa-showcase/showcase-root-config.js",
-        "@showcase/shared-libs": "https://zanzapla.net/showcase-shared-libs/showcase-shared-libs.js",
-        "@showcase/shell": "https://zanzapla.net/showcase-shell/showcase-shell.js",
-        "@showcase/intro": "https://zanzapla.net/showcase-intro/showcase-intro.js",
-        "@showcase/content": "https://zanzapla.net/showcase-content/showcase-content.js"
+        "@zanza00/root-config": "https://zanzapla.net/single-spa-showcase/zanza00-root-config.js",
+        "@zanza00/shared-libs": "https://zanzapla.net/showcase-shared-libs/zanza00-shared-libs.js",
+        "@zanza00/shell": "https://zanzapla.net/showcase-shell/zanza00-shell.js",
+        "@zanza00/intro": "https://zanzapla.net/showcase-intro/zanza00-intro.js",
+        "@zanza00/content": "https://zanzapla.net/showcase-content/zanza00-content.js"
       }
     }
   </script>
-  <% } %>
-
-  <!-- Local development import map -->
-  <% if (isLocal) { %>
-  <script type="injector-importmap">
-    {
-      "imports": {
-        "@showcase/root-config": "http://localhost:9000/showcase-root-config.js",
-        "@showcase/shared-libs": "http://localhost:8082/showcase-shared-libs.js",
-        "@showcase/shell": "http://localhost:8080/showcase-shell.js",
-        "@showcase/intro": "http://localhost:8083/showcase-intro.js",
-        "@showcase/content": "http://localhost:8081/showcase-content.js"
-      }
-    }
-  </script>
-  <% } %>
 
   <script src="https://cdn.jsdelivr.net/npm/import-map-overrides@5.1.1/dist/import-map-overrides.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@single-spa/import-map-injector@2.0.1/lib/import-map-injector.js"></script>
@@ -117,7 +86,7 @@
     You need to enable JavaScript to run this app.
   </noscript>
 
-  <!-- Shell: Always visible (header + progress bar) -->
+  <!-- Shell: Always visible (header + source of portalled progress bar) -->
   <div id="shell-container"></div>
 
   <!-- Main content area for routed MFEs -->
@@ -128,7 +97,7 @@
 
   <script>
     window.importMapInjector.initPromise.then(() => {
-      import('@showcase/root-config');
+      import('@zanza00/root-config');
     });
   </script>
   <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
