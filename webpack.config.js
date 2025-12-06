@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = (webpackConfigEnv, argv) => {
   const orgName = "zanza00";
-  
+
   const defaultConfig = singleSpaDefaults({
     orgName,
     projectName: "root-config",
@@ -24,7 +24,6 @@ module.exports = (webpackConfigEnv, argv) => {
         inject: false,
         template: "src/index.ejs",
         templateParameters: {
-          isLocal,
           orgName,
         },
       }),
