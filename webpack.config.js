@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = (webpackConfigEnv, argv) => {
   const orgName = "zanza00";
-  const isLocal = webpackConfigEnv && webpackConfigEnv.isLocal;
   
   const defaultConfig = singleSpaDefaults({
     orgName,
@@ -15,17 +14,10 @@ module.exports = (webpackConfigEnv, argv) => {
     outputSystemJS: false,
   });
 
-  defaultConfig.externals = [
-    ...defaultConfig.externals,
-    "react",
-    "react-dom",
-    "react-dom/client",
-  ];
-
   return merge(defaultConfig, {
     output: {
-      // For GitHub Pages, assets are served from /single-spa-showcase/
-      publicPath: isLocal ? "/" : "/single-spa-showcase/",
+      // Custom domain: single-spa.showcase.zanzapla.net
+      publicPath: "/",
     },
     plugins: [
       new HtmlWebpackPlugin({
