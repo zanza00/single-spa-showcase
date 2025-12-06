@@ -46,5 +46,5 @@
     "@types/webpack-env": "^1.16.2"
   },
   "types": "dist/zanza00-root-config.d.ts",
-  "version": "0.0.6"
+  "version": "0.0.7"
 }
